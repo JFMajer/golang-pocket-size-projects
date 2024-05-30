@@ -5,38 +5,50 @@ import "testing"
 func ExampleMain() {
 	main()
 	// Output:
-	// Hello, Earth!
+	// Hola!
 }
 
-func TestGreet_English(t *testing.T) {
-	lang := language("en")
-	want := "Hello, Earth!"
-
-	got := greet(lang)
-
-	if want != got {
-		t.Errorf("expected: %q, got: %q", want, got)
+func TestGreet(t *testing.T) {
+	type testCase struct {
+		lang language
+		want string
 	}
-}
 
-func TestGreet_Polish(t *testing.T) {
-	lang := language("pl")
-	want := "Dzień dobry!"
-
-	got := greet(lang)
-
-	if want != got {
-		t.Errorf("expected: %q, got: %q", want, got)
+	var tests = map[string]testCase{
+		"English": {
+			lang: "en",
+			want: "Hello, Earth!",
+		},
+		"Polish": {
+			lang: "pl",
+			want: "Dzień dobry!",
+		},
+		"French": {
+			lang: "fr",
+			want: "Bonjour!",
+		},
+		"Spanish": {
+			want: "Hola!",
+			lang: "es",
+		},
+		"Urdu": {
+			want: `Unsupported language: "ur"`,
+			lang: "ur",
+		},
+		"Empty": {
+			lang: "",
+			want: `Unsupported language: ""`,
+		},
 	}
-}
 
-func TestGreet_French(t *testing.T) {
-	lang := language("fr")
-	want := "Bonjour!"
+	for name, tc := range tests {
+		t.Run(name, func(t *testing.T) {
+			got := greet(tc.lang)
 
-	got := greet(lang)
-
-	if want != got {
-		t.Errorf("expected: %q, got: %q", want, got)
+			if got != tc.want {
+				t.Errorf("expected: %q, got: %q", tc.want, got)
+			}
+		})
 	}
+
 }
