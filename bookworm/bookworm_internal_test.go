@@ -2,6 +2,7 @@ package main
 
 import (
 	"reflect"
+	"sort"
 	"testing"
 )
 
@@ -77,4 +78,100 @@ func equalBooksCount(got, want map[Book]uint) bool {
 	}
 
 	return true
+}
+
+func TestBooksCount(t *testing.T) {
+	tt := map[string]struct {
+		input []Bookworm
+		want  map[Book]uint
+	}{
+		"nominal use case": {
+			input: []Bookworm{
+				{Name: "Fadi", Books: []Book{handmaidsTale, theBellJar}},
+				{Name: "Peggy", Books: []Book{oryxAndCrake, handmaidsTale, janeEyre}},
+			},
+			want: map[Book]uint{handmaidsTale: 2, theBellJar: 1, oryxAndCrake: 1, janeEyre: 1},
+		},
+		"no bookworms": {
+			input: []Bookworm{},
+			want:  map[Book]uint{},
+		},
+	}
+
+	for name, tc := range tt {
+		t.Run(name, func(t *testing.T) {
+			got := booksCount(tc.input)
+			if !equalBooksCount(tc.want, got) {
+				t.Fatalf("got a different list of books: %v, expected %v", got, tc.want)
+			}
+		})
+	}
+}
+
+func TestFindCommonBooks(t *testing.T) {
+	tt := map[string]struct {
+		input []Bookworm
+		want  []Book
+	}{
+		"no common book": {
+			input: []Bookworm{
+				{Name: "Fadi", Books: []Book{handmaidsTale, theBellJar}},
+				{Name: "Peggy", Books: []Book{oryxAndCrake, janeEyre}},
+			},
+			want: nil,
+		},
+		"one common book": {
+			input: []Bookworm{
+				{Name: "Fadi", Books: []Book{janeEyre, theBellJar}},
+				{Name: "Peggy", Books: []Book{oryxAndCrake, janeEyre}},
+			},
+			want: []Book{janeEyre},
+		},
+		"three bookworms have the same books on their shelves": {
+			input: []Bookworm{
+				{Name: "Fadi", Books: []Book{janeEyre, theBellJar}},
+				{Name: "Peggy", Books: []Book{theBellJar, janeEyre}},
+				{Name: "Jakub", Books: []Book{theBellJar, janeEyre}},
+			},
+			want: []Book{janeEyre, theBellJar},
+		},
+	}
+
+	for name, tc := range tt {
+		t.Run(name, func(t *testing.T) {
+			got := findCommonBooks(tc.input)
+			sortBooks(got)
+			if !equalBooks(t, tc.want, got) {
+				t.Fatalf("got a different list of books: %v, expected %v", got, tc.want)
+			}
+		})
+	}
+
+}
+
+// equalBooks is a helper to test the equality of two lists of Books.
+func equalBooks(t *testing.T, books, target []Book) bool {
+	t.Helper()
+
+	if len(books) != len(target) {
+		// Early exit!
+		return false
+	}
+	// Verify the content of the collections of Books for each Bookworm.
+	for i := range target {
+		if target[i] != books[i] {
+			return false
+		}
+	}
+	// Everything is equal!
+	return true
+}
+
+func sortBooks(books []Book) {
+	sort.Slice(books, func(i, j int) bool {
+		if books[i].Author != books[j].Author {
+			return books[i].Author < books[j].Author
+		}
+		return books[i].Title < books[j].Title
+	})
 }

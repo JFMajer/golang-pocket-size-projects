@@ -1,32 +1,158 @@
 [
-    {
+  {
       "name": "Fadi",
       "books": [
-        {
-          "author": "Margaret Atwood",
-          "title": "The Handmaid's Tale"
-        },
-        {
-          "author": "Sylvia Plath",
-          "title": "The Bell Jar"
-        }
+          {
+              "author": "Margaret Atwood",
+              "title": "The Handmaid's Tale"
+          },
+          {
+              "author": "Sylvia Plath",
+              "title": "The Bell Jar"
+          }
       ]
-    },
-    {
+  },
+  {
       "name": "Peggy",
       "books": [
-        {
-          "author": "Margaret Atwood",
-          "title": "Oryx and Crake"
-        },
-        {
-          "author": "Margaret Atwood",
-          "title": "The Handmaid's Tale"
-        },
-        {
-          "author": "Charlotte Brontë",
-          "title": "Jane Eyre"
-        }
+          {
+              "author": "Margaret Atwood",
+              "title": "Oryx and Crake"
+          },
+          {
+              "author": "Margaret Atwood",
+              "title": "The Handmaid's Tale"
+          },
+          {
+              "author": "Charlotte Brontë",
+              "title": "Jane Eyre"
+          }
       ]
-    }
-  ]
+  },
+  {
+    "name": "John",
+    "books": [
+        {
+            "author": "George Orwell",
+            "title": "1984"
+        },
+        {
+            "author": "Aldous Huxley",
+            "title": "Brave New World"
+        },
+        {
+            "author": "Ray Bradbury",
+            "title": "Fahrenheit 451"
+        },
+        {
+            "author": "Margaret Atwood",
+            "title": "The Handmaid's Tale"
+        }
+    ]
+},
+{
+    "name": "Sarah",
+    "books": [
+        {
+            "author": "J.K. Rowling",
+            "title": "Harry Potter and the Sorcerer's Stone"
+        },
+        {
+            "author": "J.R.R. Tolkien",
+            "title": "The Hobbit"
+        },
+        {
+            "author": "Jane Austen",
+            "title": "Pride and Prejudice"
+        },
+        {
+            "author": "George Orwell",
+            "title": "1984"
+        }
+    ]
+},
+{
+    "name": "Alice",
+    "books": [
+        {
+            "author": "Harper Lee",
+            "title": "To Kill a Mockingbird"
+        },
+        {
+            "author": "F. Scott Fitzgerald",
+            "title": "The Great Gatsby"
+        },
+        {
+            "author": "Emily Brontë",
+            "title": "Wuthering Heights"
+        },
+        {
+            "author": "Charlotte Brontë",
+            "title": "Jane Eyre"
+        }
+    ]
+},
+{
+    "name": "Mark",
+    "books": [
+        {
+            "author": "Herman Melville",
+            "title": "Moby-Dick"
+        },
+        {
+            "author": "Leo Tolstoy",
+            "title": "War and Peace"
+        },
+        {
+            "author": "Fyodor Dostoevsky",
+            "title": "Crime and Punishment"
+        },
+        {
+            "author": "George Orwell",
+            "title": "1984"
+        }
+    ]
+},
+{
+    "name": "Lily",
+    "books": [
+        {
+            "author": "Gabriel Garcia Marquez",
+            "title": "One Hundred Years of Solitude"
+        },
+        {
+            "author": "Isabel Allende",
+            "title": "The House of the Spirits"
+        },
+        {
+            "author": "Toni Morrison",
+            "title": "Beloved"
+        },
+        {
+            "author": "Harper Lee",
+            "title": "To Kill a Mockingbird"
+        }
+    ]
+},
+{
+    "name": "Tom",
+    "books": [
+        {
+            "author": "Ernest Hemingway",
+            "title": "The Old Man and the Sea"
+        },
+        {
+            "author": "Mark Twain",
+            "title": "Adventures of Huckleberry Finn"
+        },
+        {
+            "author": "John Steinbeck",
+            "title": "Of Mice and Men"
+        },
+        {
+            "author": "F. Scott Fitzgerald",
+            "title": "The Great Gatsby"
+        }
+    ]
+}
+]
